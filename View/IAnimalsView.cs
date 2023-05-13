@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace newWPF.View
 {
+    delegate void DeleteAnimation();
+    delegate void AddAnimation();
+    delegate void UpdateAnimation();
+    delegate void ClearAnimation();
+    delegate void CreateAnimation();
     internal interface IAnimalsView
     {
         string IdText { get; set; }
@@ -14,11 +19,11 @@ namespace newWPF.View
         string AgeText { get; set; }
         string GenderText { get; set; }
 
-        event EventHandler DeleteAnim;
-        event EventHandler AddAnim;
-        event EventHandler UpdateAnim;
-        event EventHandler ClearAnim;
-        event EventHandler CreateAnim;
+        event DeleteAnimation DeleteAnimEvent;
+        event AddAnimation AddAnimaEvent;
+        event UpdateAnimation UpdateAnimEvent;
+        event ClearAnimation ClearAnimEvent;
+        event CreateAnimation CreateAnimEvent;
 
         void LoadData();
         void ClearTextBox();

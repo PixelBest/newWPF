@@ -24,6 +24,12 @@ namespace newWPF.View
     {
         public AnimalsEntities animalsEntities = new AnimalsEntities();
         public ObservableCollection<AnimalsTable> OCAnimals;
+        public MainWindow()
+        {
+            InitializeComponent();
+            BindingButtons();
+            LoadData();
+        }
 
         public string IdText
         {
@@ -50,27 +56,51 @@ namespace newWPF.View
             get => t4.Text; 
             set => t4.Text = value; 
         }
-        public event EventHandler DeleteAnim;
-        public event EventHandler AddAnim;
-        public event EventHandler UpdateAnim;
-        public event EventHandler ClearAnim;
-        public event EventHandler CreateAnim;
 
-        public MainWindow()
+        private DeleteAnimation deleteAnim;
+        private AddAnimation addAnim;
+        private UpdateAnimation updateAnim;
+        private ClearAnimation clearAnim;
+        private CreateAnimation createAnim;
+
+        event AddAnimation IAnimalsView.AddAnimaEvent
         {
-            InitializeComponent();
-            BindingButtons();
-            LoadData();
+            add => addAnim += value;
+            remove => addAnim -= value;
+        }
+
+        event DeleteAnimation IAnimalsView.DeleteAnimEvent
+        {
+            add => deleteAnim += value;
+            remove => deleteAnim -= value;
+        }
+
+        event UpdateAnimation IAnimalsView.UpdateAnimEvent
+        {
+            add => updateAnim += value;
+            remove => updateAnim -= value;
+        }
+
+        event ClearAnimation IAnimalsView.ClearAnimEvent
+        {
+            add => clearAnim += value;
+            remove => clearAnim -= value;
+        }
+
+        event CreateAnimation IAnimalsView.CreateAnimEvent
+        {
+            add => createAnim += value;
+            remove => createAnim -= value;
         }
 
         private void BindingButtons()
         {
             new AnimalsPresenter(this);
-            btnAdd.Click += delegate { AddAnim?.Invoke(this, EventArgs.Empty); };
-            btnUpdate.Click += delegate { UpdateAnim?.Invoke(this, EventArgs.Empty); };
-            btnDel.Click += delegate { DeleteAnim?.Invoke(this, EventArgs.Empty); };
-            btnClear.Click += delegate { ClearAnim?.Invoke(this, EventArgs.Empty); };
-            btnCreate.Click += delegate { CreateAnim?.Invoke(this, EventArgs.Empty); };
+            btnAdd.Click += delegate { addAnim?.Invoke(); };
+            btnUpdate.Click += delegate { updateAnim?.Invoke(); };
+            btnDel.Click += delegate { deleteAnim?.Invoke(); };
+            btnClear.Click += delegate { clearAnim?.Invoke(); };
+            btnCreate.Click += delegate { createAnim?.Invoke(); };
         }
 
         public void ClearTextBox()
