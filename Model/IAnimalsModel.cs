@@ -9,10 +9,10 @@ namespace newWPF.Model
 {
     internal interface IAnimalsModel
     {
-        void Add(string kindOfAnimal, string name, string age, string gender, MainWindow mw);
-        void Update(string id, string kindOfAnimal, string name, string age, string gender, MainWindow mw);
-        void Delete(string id, MainWindow mw);
-        void Clear(MainWindow mw);
-        void Create(MainWindow mw);
+        void Add(string kindOfAnimal, string name, string age, string gender, IAnimalsView view);
+        void Update(string id, string kindOfAnimal, string name, string age, string gender, IAnimalsView view);
+        void Delete(string id, IAnimalsView view);
+        void Clear(IAnimalsView view);
+        void Create(IAnimalsView view);
     }
 }

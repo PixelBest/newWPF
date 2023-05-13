@@ -31,18 +31,18 @@ namespace newWPF.Presenter
         }
 
         private void Add()
-            => model.Add(view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, mw);
+            => model.Add(view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);
 
         private void Update()
-            => model.Update(view.IdText, view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, mw);
+            => model.Update(view.IdText, view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);
 
         private void Delete()
-            => model.Delete(view.IdText, mw);
-        
+            => model.Delete(view.IdText, view);
+
         private void Clear()
-            => model.Clear(mw);
-        
+            => model.Clear(view);
+
         private void Create()
-            => model.Create(mw);
+            => model.Create(view);
     }
 }

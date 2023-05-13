@@ -10,11 +10,11 @@ namespace newWPF.Model
 {
     public class AnimalsModel : IAnimalsModel
     {
-        public void Add(string kindOfAnimal, string name, string age, string gender, MainWindow mw)
+        void IAnimalsModel.Add(string kindOfAnimal, string name, string age, string gender, IAnimalsView view)
         {
             AnimalsTable animalsTable = new AnimalsTable();
             int nextId = 1;
-            foreach (var anim in mw.OCAnimals)
+            foreach (var anim in view.ListAnimals)
             {
                 if (nextId <= int.Parse(anim.Id))
                     nextId = int.Parse(anim.Id) + 1;
@@ -24,23 +24,23 @@ namespace newWPF.Model
             animalsTable.Name = name;
             animalsTable.Age = age;
             animalsTable.Gender = gender;
-            mw.OCAnimals.Add(animalsTable);
-            mw.animalsEntities.AnimalsTable.Add(animalsTable);
-            mw.animalsEntities.SaveChanges();
-            mw.ClearTextBox();
+            view.ListAnimals.Add(animalsTable);
+            view.AnimEnt.AnimalsTable.Add(animalsTable);
+            view.AnimEnt.SaveChanges();
+            view.ClearTextBox();
         }
 
-        public void Clear(MainWindow mw)
+        void IAnimalsModel.Clear(IAnimalsView view)
         {
-            for (int i = mw.OCAnimals.Count - 1; i >= 0; i--)
+            for (int i = view.ListAnimals.Count - 1; i >= 0; i--)
             {
-                mw.animalsEntities.AnimalsTable.Remove(mw.OCAnimals[i]);
-                mw.animalsEntities.SaveChanges();
-                mw.OCAnimals.Remove(mw.OCAnimals[i]);
+                view.AnimEnt.AnimalsTable.Remove(view.ListAnimals[i]);
+                view.AnimEnt.SaveChanges();
+                view.ListAnimals.Remove(view.ListAnimals[i]);
             }
         }
 
-        public void Create(MainWindow mw)
+        void IAnimalsModel.Create(IAnimalsView view)
         {
             CreateAnim.anim.Clear();
             CreateAnim.Create();
@@ -48,7 +48,7 @@ namespace newWPF.Model
             {
                 AnimalsTable animalsTable = new AnimalsTable();
                 int nextId = 1;
-                foreach (var anim1 in mw.OCAnimals)
+                foreach (var anim1 in view.ListAnimals)
                 {
                     if (nextId <= int.Parse(anim1.Id))
                         nextId = int.Parse(anim1.Id) + 1;
@@ -58,40 +58,40 @@ namespace newWPF.Model
                 animalsTable.Name = anim.Name;
                 animalsTable.Age = anim.Age;
                 animalsTable.Gender = anim.Gender;
-                mw.OCAnimals.Add(animalsTable);
-                mw.animalsEntities.AnimalsTable.Add(animalsTable);
-                mw.animalsEntities.SaveChanges();
+                view.ListAnimals.Add(animalsTable);
+                view.AnimEnt.AnimalsTable.Add(animalsTable);
+                view.AnimEnt.SaveChanges();
             }
         }
 
-        public void Delete(string id, MainWindow mw)
+        void IAnimalsModel.Delete(string id, IAnimalsView view)
         {
-            for (int i = 0; i < mw.OCAnimals.Count; i++)
+            for (int i = 0; i < view.ListAnimals.Count; i++)
             {
-                if (int.Parse(id) == int.Parse(mw.OCAnimals[i].Id))
+                if (int.Parse(id) == int.Parse(view.ListAnimals[i].Id))
                 {
-                    mw.animalsEntities.AnimalsTable.Remove(mw.OCAnimals[i]);
-                    mw.animalsEntities.SaveChanges();
-                    mw.ClearTextBox();
-                    mw.LoadData();
+                    view.AnimEnt.AnimalsTable.Remove(view.ListAnimals[i]);
+                    view.AnimEnt.SaveChanges();
+                    view.ClearTextBox();
+                    view.LoadData();
                     break;
                 }
             }
         }
 
-        public void Update(string id, string kindOfAnimal, string name, string age, string gender, MainWindow mw)
+        void IAnimalsModel.Update(string id, string kindOfAnimal, string name, string age, string gender, IAnimalsView view)
         {
-            for (int i = 0; i < mw.OCAnimals.Count; i++)
+            for (int i = 0; i < view.ListAnimals.Count; i++)
             {
-                if (int.Parse(id) == int.Parse(mw.OCAnimals[i].Id))
+                if (int.Parse(id) == int.Parse(view.ListAnimals[i].Id))
                 {
-                    mw.OCAnimals[i].KindOfAnimal = kindOfAnimal;
-                    mw.OCAnimals[i].Name = name;
-                    mw.OCAnimals[i].Age = age;
-                    mw.OCAnimals[i].Gender = gender;
-                    mw.animalsEntities.SaveChanges();
-                    mw.LoadData();
-                    mw.ClearTextBox();
+                    view.ListAnimals[i].KindOfAnimal = kindOfAnimal;
+                    view.ListAnimals[i].Name = name;
+                    view.ListAnimals[i].Age = age;
+                    view.ListAnimals[i].Gender = gender;
+                    view.AnimEnt.SaveChanges();
+                    view.LoadData();
+                    view.ClearTextBox();
                     break;
                 }
             }

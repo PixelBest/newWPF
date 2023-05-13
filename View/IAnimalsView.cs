@@ -1,5 +1,7 @@
-﻿using System;
+﻿using newWPF.DataBase;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,8 @@ namespace newWPF.View
         string AgeText { get; set; }
         string GenderText { get; set; }
 
+        ObservableCollection<AnimalsTable> ListAnimals { get; set; }
+        AnimalsEntities AnimEnt { get; }
         event DeleteAnimation DeleteAnimEvent;
         event AddAnimation AddAnimaEvent;
         event UpdateAnimation UpdateAnimEvent;

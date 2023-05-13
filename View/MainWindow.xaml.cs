@@ -22,8 +22,18 @@ namespace newWPF.View
     /// </summary>
     public partial class MainWindow : Window, IAnimalsView
     {
-        public AnimalsEntities animalsEntities = new AnimalsEntities();
-        public ObservableCollection<AnimalsTable> OCAnimals;
+        private AnimalsEntities animalsEntities = new AnimalsEntities();
+        private ObservableCollection<AnimalsTable> listAnimals;
+        ObservableCollection<AnimalsTable> IAnimalsView.ListAnimals
+        {
+            get => listAnimals;
+            set => listAnimals = value;
+        }
+
+        AnimalsEntities IAnimalsView.AnimEnt
+        {
+            get => animalsEntities; 
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -110,10 +120,10 @@ namespace newWPF.View
 
         public void LoadData()
         {
-            if(OCAnimals != null)
-                OCAnimals.Clear();
-            OCAnimals = new ObservableCollection<AnimalsTable>(animalsEntities.AnimalsTable);
-            lv1.ItemsSource = OCAnimals;
+            if(listAnimals != null)
+                listAnimals.Clear();
+            listAnimals = new ObservableCollection<AnimalsTable>(animalsEntities.AnimalsTable);
+            lv1.ItemsSource = listAnimals;
         }
     }
 }
