@@ -1,10 +1,13 @@
-﻿using newWPF.DataBase;
+﻿using Microsoft.Win32;
+using newWPF.DataBase;
 using newWPF.View;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace newWPF.Model
 {
@@ -63,7 +66,6 @@ namespace newWPF.Model
                 view.AnimEnt.SaveChanges();
             }
         }
-
         void IAnimalsModel.Delete(string id, IAnimalsView view)     //реализация метода удаления животных
         {
             for (int i = 0; i < view.ListAnimals.Count; i++)
@@ -94,6 +96,23 @@ namespace newWPF.Model
                     view.ClearTextBox();
                     break;
                 }
+            }
+        }
+        void IAnimalsModel.Save(IAnimalsView view)      //реализация метода сохранения данных
+        {
+            int count = 1;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "Animals";
+            sfd.Filter = "Text file (*.txt)|*.txt| Xml file (*.xml)|*.xml";
+            if (sfd.ShowDialog() == true)
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                    foreach (AnimalsTable animals in view.ListAnimals)
+                    {
+                        sw.WriteLine($"{count}) Вид: {animals.KindOfAnimal}, название: {animals.Name}, возраст:{animals.Age}, пол:{animals.Gender}");
+                        count++;
+                    }
+                MessageBox.Show("Сохранение прошло успешно");
             }
         }
     }

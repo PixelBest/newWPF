@@ -72,6 +72,7 @@ namespace newWPF.View
         private UpdateAnimation updateAnim;
         private ClearAnimation clearAnim;
         private CreateAnimation createAnim;
+        private SaveData saveData;
 
         event AddAnimation IAnimalsView.AddAnimaEvent   //создание свойства для делегата addAnim
         {
@@ -103,6 +104,12 @@ namespace newWPF.View
             remove => createAnim -= value;
         }
 
+        event SaveData IAnimalsView.SaveDataEvent
+        {
+            add => saveData += value;
+            remove => saveData -= value;
+        }
+
         private void BindingButtons()   //привязка кнопок к методам
         {
             new AnimalsPresenter(this);
@@ -111,6 +118,7 @@ namespace newWPF.View
             btnDel.Click += delegate { deleteAnim?.Invoke(); };
             btnClear.Click += delegate { clearAnim?.Invoke(); };
             btnCreate.Click += delegate { createAnim?.Invoke(); };
+            btnSaveData.Click += delegate { saveData?.Invoke(); };
         }
 
         public void ClearTextBox()  //метод очищающий TextBox-ы

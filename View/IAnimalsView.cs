@@ -13,6 +13,7 @@ namespace newWPF.View
     delegate void UpdateAnimation();    //делегаты для действий с базой данных
     delegate void ClearAnimation();
     delegate void CreateAnimation();
+    delegate void SaveData();
     internal interface IAnimalsView
     {
         string IdText { get; set; }
@@ -28,6 +29,7 @@ namespace newWPF.View
         event UpdateAnimation UpdateAnimEvent;      //события для действий с базой данных
         event ClearAnimation ClearAnimEvent;
         event CreateAnimation CreateAnimEvent;
+        event SaveData SaveDataEvent;
 
         void LoadData();
         void ClearTextBox();

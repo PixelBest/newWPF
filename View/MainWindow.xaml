@@ -56,5 +56,6 @@
         <TextBox x:Name="textBox1"  HorizontalAlignment="Left" Height="36" Margin="649,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
         <Button Name="btnCreate" Content="Создать" HorizontalAlignment="Left" Height="35" Margin="562,38,0,0" VerticalAlignment="Top" Width="228"/>
         <Button x:Name="btnClear" Content="Очистить" HorizontalAlignment="Left" Height="36" Margin="550,170,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button x:Name="btnSaveData" Content="Сохранить" HorizontalAlignment="Left" Height="36" Margin="676,170,0,0" VerticalAlignment="Top" Width="105"/>
     </Grid>
 </Window>

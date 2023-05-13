@@ -14,5 +14,6 @@ namespace newWPF.Model
         void Delete(string id, IAnimalsView view);          //методы для действий с базой данных
         void Clear(IAnimalsView view);
         void Create(IAnimalsView view);
+        void Save(IAnimalsView view);
     }
 }

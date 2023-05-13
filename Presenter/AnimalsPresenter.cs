@@ -28,6 +28,7 @@ namespace newWPF.Presenter
             view.DeleteAnimEvent += Delete;
             view.ClearAnimEvent += Clear;
             view.CreateAnimEvent += Create;
+            view.SaveDataEvent += Save;
         }
 
         private void Add()
@@ -42,7 +43,10 @@ namespace newWPF.Presenter
         private void Clear()
             => model.Clear(view);       //очистка ListView
 
-        private void Create()       //создание 6 животных в базу данных
-            => model.Create(view);
+        private void Create()       
+            => model.Create(view);      //создание 6 животных в базу данных
+
+        private void Save()
+            => model.Save(view);    //сохранение коллекции в файл
     }
 }
