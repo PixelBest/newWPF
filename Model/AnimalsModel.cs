@@ -10,7 +10,7 @@ namespace newWPF.Model
 {
     public class AnimalsModel : IAnimalsModel
     {
-        void IAnimalsModel.Add(string kindOfAnimal, string name, string age, string gender, IAnimalsView view)
+        void IAnimalsModel.Add(string kindOfAnimal, string name, string age, string gender, IAnimalsView view)      //реализация метода добавления
         {
             AnimalsTable animalsTable = new AnimalsTable();
             int nextId = 1;
@@ -30,7 +30,7 @@ namespace newWPF.Model
             view.ClearTextBox();
         }
 
-        void IAnimalsModel.Clear(IAnimalsView view)
+        void IAnimalsModel.Clear(IAnimalsView view)     //реализация метода очистки ListView
         {
             for (int i = view.ListAnimals.Count - 1; i >= 0; i--)
             {
@@ -40,7 +40,7 @@ namespace newWPF.Model
             }
         }
 
-        void IAnimalsModel.Create(IAnimalsView view)
+        void IAnimalsModel.Create(IAnimalsView view)        //реализация метода создания 6 животных
         {
             CreateAnim.anim.Clear();
             CreateAnim.Create();
@@ -64,7 +64,7 @@ namespace newWPF.Model
             }
         }
 
-        void IAnimalsModel.Delete(string id, IAnimalsView view)
+        void IAnimalsModel.Delete(string id, IAnimalsView view)     //реализация метода удаления животных
         {
             for (int i = 0; i < view.ListAnimals.Count; i++)
             {
@@ -79,7 +79,7 @@ namespace newWPF.Model
             }
         }
 
-        void IAnimalsModel.Update(string id, string kindOfAnimal, string name, string age, string gender, IAnimalsView view)
+        void IAnimalsModel.Update(string id, string kindOfAnimal, string name, string age, string gender, IAnimalsView view)        //реализация метода обновления животных в бд
         {
             for (int i = 0; i < view.ListAnimals.Count; i++)
             {

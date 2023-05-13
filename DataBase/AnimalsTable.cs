@@ -12,7 +12,7 @@ namespace newWPF.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class AnimalsTable
+    public partial class AnimalsTable       //класс животных из бд
     {
         public string Id { get; set; }
         public string KindOfAnimal { get; set; }

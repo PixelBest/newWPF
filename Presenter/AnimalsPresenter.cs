@@ -31,18 +31,18 @@ namespace newWPF.Presenter
         }
 
         private void Add()
-            => model.Add(view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);
+            => model.Add(view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);   //добавление животных в базу данных
 
         private void Update()
-            => model.Update(view.IdText, view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);
+            => model.Update(view.IdText, view.KindOfAnimalsText, view.NameText, view.AgeText, view.GenderText, view);   //обновление животных в базе данных
 
         private void Delete()
-            => model.Delete(view.IdText, view);
+            => model.Delete(view.IdText, view);   //удаление животных из базы данных
 
         private void Clear()
-            => model.Clear(view);
+            => model.Clear(view);       //очистка ListView
 
-        private void Create()
+        private void Create()       //создание 6 животных в базу данных
             => model.Create(view);
     }
 }

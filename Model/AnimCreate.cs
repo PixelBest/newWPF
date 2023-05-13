@@ -11,7 +11,7 @@ namespace newWPF.Model
     public class CreateAnim
     {
         public static ObservableCollection<AnimalsTable> anim = new ObservableCollection<AnimalsTable>();
-        public static void Create()
+        public static void Create()     //метод создания 6 животных
         {
             Creator creator = new CreateMammals();
             AnimalsTable anim1 = creator.Create("Тигр", "10", "М");
