@@ -15,7 +15,7 @@ namespace newWPF.Presenter
     internal class AnimalsPresenter
     {
         private IAnimalsView view;
-        MainWindow mw;
+        private MainWindow mw;
 
         public AnimalsPresenter(IAnimalsView view)
         {
