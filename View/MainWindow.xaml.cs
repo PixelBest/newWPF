@@ -40,31 +40,55 @@ namespace newWPF.View
             BindingButtons();
             LoadData();
         }
-
-        public string IdText    //создание свойства для textBox поля Id
-        {
-            get => textBox1.Text;
-            set => textBox1.Text = value;
-        }
-        public string KindOfAnimalsText     //создание свойства для textBox поля KindOfAnimals
+        public string AddKindOfAnimalsText     //создание свойства для textBox поля KindOfAnimals
         {
             get => t1.Text;
             set => t1.Text = value; 
         }
-        public string NameText    //создание свойства для textBox поля Name
+        public string AddNameText    //создание свойства для textBox поля Name
         {
             get => t2.Text;
             set => t2.Text = value; 
         }
-        public string AgeText    //создание свойства для textBox поля Age
+        public string AddAgeText    //создание свойства для textBox поля Age
         { 
             get => t3.Text; 
             set => t3.Text = value;
         }
-        public string GenderText    //создание свойства для textBox поля Gender
+        public string AddGenderText    //создание свойства для textBox поля Gender
         {
             get => t4.Text; 
             set => t4.Text = value; 
+        }
+        string IAnimalsView.UpdateIdText
+        {
+            get => textBoxUpdate1.Text;
+            set => textBoxUpdate1.Text = value;
+        }
+        string IAnimalsView.UpdateAddKindOfAnimalsText
+        {
+            get => textBoxUpdate2.Text;
+            set => textBoxUpdate2.Text = value;
+        }
+        string IAnimalsView.UpdateAddNameText
+        {
+            get => textBoxUpdate3.Text;
+            set => textBoxUpdate3.Text = value;
+        }
+        string IAnimalsView.UpdateAddAgeText
+        {
+            get => textBoxUpdate4.Text;
+            set => textBoxUpdate4.Text = value;
+        }
+        string IAnimalsView.UpdateAddGenderText
+        {
+            get => textBoxUpdate5.Text;
+            set => textBoxUpdate5.Text = value;
+        }
+        string IAnimalsView.DeleteIdText
+        {
+            get => textBoxDelete.Text;
+            set => textBoxDelete.Text = value;
         }
 
         private DeleteAnimation deleteAnim;
@@ -123,7 +147,9 @@ namespace newWPF.View
 
         public void ClearTextBox()  //метод очищающий TextBox-ы
         {
-            t1.Text = ""; t2.Text = ""; t3.Text = ""; t4.Text = ""; textBox1.Text = "";
+            t1.Text = ""; t2.Text = ""; t3.Text = ""; t4.Text = "";
+            textBoxUpdate1.Text = ""; textBoxUpdate2.Text = ""; textBoxUpdate3.Text = ""; textBoxUpdate4.Text = ""; textBoxUpdate5.Text = "";
+            textBoxDelete.Text = "";
         }
 
         public void LoadData()  //метод загружающий данные из SQL Server в кроллекцию животных

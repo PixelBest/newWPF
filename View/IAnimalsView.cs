@@ -16,11 +16,16 @@ namespace newWPF.View
     delegate void SaveData();
     internal interface IAnimalsView
     {
-        string IdText { get; set; }
-        string KindOfAnimalsText { get; set; }
-        string NameText { get; set; }       //свойства для TextBox-ов
-        string AgeText { get; set; }
-        string GenderText { get; set; }
+        string AddKindOfAnimalsText { get; set; }
+        string AddNameText { get; set; }       //свойства для TextBox-ов
+        string AddAgeText { get; set; }
+        string AddGenderText { get; set; }
+        string UpdateIdText { get; set; }
+        string UpdateAddKindOfAnimalsText { get; set; }
+        string UpdateAddNameText { get; set; }       //свойства для TextBox-ов
+        string UpdateAddAgeText { get; set; }
+        string UpdateAddGenderText { get; set; }
+        string DeleteIdText { get; set; }
 
         ObservableCollection<AnimalsTable> ListAnimals { get; set; }
         AnimalsEntities AnimEnt { get; }
